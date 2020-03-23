@@ -31,7 +31,7 @@ function checkEmail(input) {
 // Check required fields
 function checkRequired(inputArr) {
   inputArr.forEach(function(input) {
-    if (input.value.trim() === '') {
+    if (input.value.trim() === '') { // add trim to trim out white space
       showError(input, `${getFieldName(input)} is required`);
     } else {
       showSuccess(input);
@@ -65,6 +65,7 @@ function checkPasswordsMatch(input1, input2) {
 
 // Get fieldname
 function getFieldName(input) {
+  // get the first letter of the input's id, then add it with the rest of the letters (slice(1))
   return input.id.charAt(0).toUpperCase() + input.id.slice(1);
 }
 
@@ -72,6 +73,7 @@ function getFieldName(input) {
 form.addEventListener('submit', function(e) {
   e.preventDefault();
 
+  //pass in an array of all the input we want
   checkRequired([username, email, password, password2]);
   checkLength(username, 3, 15);
   checkLength(password, 6, 25);
